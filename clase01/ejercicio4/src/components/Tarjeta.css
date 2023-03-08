@@ -1,0 +1,9 @@
+.TituloTarjeta {
+    margin: 0;
+    background-color: black;
+    color: white;
+}
+
+img {
+    object-fit: cover;
+}

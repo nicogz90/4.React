@@ -1,0 +1,14 @@
+.App {
+  margin: 20px auto;
+  width: 30%;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.active {
+  font-weight: bolder;
+}
+
+a {
+  text-decoration: none;
+}
