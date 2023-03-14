@@ -1,9 +1,10 @@
 .TituloTarjeta {
-    margin: 0;
-    background-color: black;
-    color: white;
+  margin: 0;
+  padding: 10px;
+  background-color: black;
+  color: white;
 }
 
 img {
-    object-fit: cover;
+  object-fit: cover;
 }

@@ -17,7 +17,15 @@ function Tarjeta({ nombre, publicacion, imagenURL, puntaje }) {
       <p className="TituloTarjeta">
         {nombre} ({publicacion})
       </p>
-      <p style={{ backgroundColor: color, margin: 0 }}>{puntaje}</p>
+      <p
+        style={{
+          backgroundColor: color,
+          margin: 0,
+          padding: 10,
+        }}
+      >
+        {puntaje}
+      </p>
       <img src={imagenURL} alt="" width={300} height={500} />
     </div>
   );
