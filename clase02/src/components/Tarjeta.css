@@ -1,7 +1,11 @@
 .Card {
-  margin: 10px;
+  margin: 15px;
   display: inline-block;
   border: 1px solid grey;
+}
+
+h3 {
+  padding: 10px;
 }
 
 img {
