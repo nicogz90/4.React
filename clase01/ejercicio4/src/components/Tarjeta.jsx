@@ -12,6 +12,22 @@ function Tarjeta({ nombre, publicacion, imagenURL, puntaje }) {
     color = "grey";
   }
 
+  // Otra forma:
+  /* switch (puntaje) {
+    case "Buena":
+      color = "green";
+      break;
+    case "Regular":
+      color = "orange";
+      break;
+    case "Mala":
+      color = "red";
+      break;
+    default:
+      color = "gray";
+      break;
+  } */
+
   return (
     <div>
       <p className="TituloTarjeta">
@@ -24,7 +40,7 @@ function Tarjeta({ nombre, publicacion, imagenURL, puntaje }) {
           padding: 10,
         }}
       >
-        {puntaje}
+        {puntaje || "No la vi aún"}
       </p>
       <img src={imagenURL} alt="" width={300} height={500} />
     </div>

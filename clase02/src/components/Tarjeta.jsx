@@ -11,6 +11,15 @@ function Tarjeta({ nombrePelicula }) {
       .then((res) => {
         setMovie(res.data);
       });
+
+    // const consultarPelicula = async () => {
+    //   const result = await axios.get(
+    //     "https://private.omdbapi.com/?apikey=bef9c583&t=" + nombrePelicula
+    //   );
+    //   setMovie(result.data);
+    // };
+
+    // consultarPelicula();
   }, [nombrePelicula]); // [] significa que se ejecuta el efecto 1 sola vez
 
   if (!movie) {
