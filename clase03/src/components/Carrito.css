@@ -1,0 +1,46 @@
+.carrito {
+  border: 1px solid #8b8b88;
+  width: 350px;
+  text-align: center;
+}
+
+.disponibles {
+  background-color: #d3d3d3;
+  padding: 10px;
+  margin: 0;
+  font-size: 16px;
+}
+
+form {
+  padding: 10px;
+}
+
+form input {
+  margin-right: 15px;
+  padding: 5px;
+}
+
+form button {
+  background-color: #77aa65;
+  padding: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.vacio {
+  background-color: #808080;
+  padding: 10px;
+  color: white;
+}
+
+.error {
+  background-color: #da5d38;
+  padding: 10px;
+  color: white;
+}
+
+.agregados {
+  background-color: #ccfa73;
+  padding: 10px;
+}
