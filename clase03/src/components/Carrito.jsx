@@ -1,3 +1,4 @@
+import "./Carrito.css";
 import React, { useState } from "react";
 
 function Carrito({ producto }) {
@@ -7,37 +8,44 @@ function Carrito({ producto }) {
   const [error, setError] = useState(false);
 
   const handleClick = (e) => {
+    // La siguiente línea de código previene que se "envie" el formulario (y se recargue la página).
     e.preventDefault();
-    if (disponibles >= cantidad) {
-      setDisponibles(disponibles - cantidad);
-      setCantidad(0);
-      setAgregados(cantidad);
-      setError(false);
-    } else {
+    if (disponibles < cantidad) {
       setError(true);
+      return;
     }
+    setError(false);
+    setDisponibles(disponibles - cantidad);
+    setCantidad(0);
+    setAgregados(cantidad + agregados);
   };
 
   return (
-    <>
-      <div>
-        <h2>
-          {producto} (Disponibles: {disponibles})
-        </h2>
-        <form className="action" onSubmit={handleClick}>
-          <input
-            type="number"
-            min={0}
-            max={disponibles}
-            value={cantidad}
-            onChange={(e) => setCantidad(e.target.value)}
-          />
-          <button>Agregar</button>
-        </form>
-        {!error && <p>{agregados} elementos agregados</p>}
-        {error && <p>No hay suficientes productos</p>}
-      </div>
-    </>
+    <div className="carrito">
+      <h2 className="disponibles">
+        {producto} (Disponibles: {disponibles})
+      </h2>
+      <form className="action" onSubmit={handleClick}>
+        <input
+          type="number"
+          min={0}
+          max={disponibles}
+          value={cantidad}
+          onChange={(e) => setCantidad(parseInt(e.target.value))} // value must be converted to Number
+        />
+        <button>Agregar</button>
+      </form>
+      {!error && agregados === 0 && (
+        <p className="vacio">No hay elementos agregados</p>
+      )}
+      {!error && agregados > 0 && (
+        <p className="agregados">{agregados} elementos agregados</p>
+      )}
+      {error && <p className="error">No hay suficientes productos</p>}
+      {/* To avoid showing something you don’t want in the UI, such as 0, that could mess up the layout, 
+        it's better to use the JavaScript ternary operator instead. I.e., 
+        condition ? <ConditionalComponent /> : null  */}
+    </div>
   );
 }
 

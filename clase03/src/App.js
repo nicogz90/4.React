@@ -5,8 +5,8 @@ function App() {
   const productos = ["Galletas", "Revistas", "Refrescos"];
   return (
     <div className="App">
-      {productos.map((producto) => {
-        return <Carrito key={producto} producto={producto} />;
+      {productos.map((product) => {
+        return <Carrito key={product} producto={product} />;
       })}
     </div>
   );
