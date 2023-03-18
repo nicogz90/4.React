@@ -4,9 +4,7 @@ import { users } from "../users";
 
 export default function User() {
   const params = useParams();
-  console.log(params);
   const user = users.find((user) => user.id === parseInt(params.id)); // los parametros siempre son String. Para compararlo con un number hay que parsearlo.
-  console.log(user);
   if (!user) {
     return <p>El usuario con Id: {params.id} no existe</p>;
   }

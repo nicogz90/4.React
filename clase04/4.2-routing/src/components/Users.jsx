@@ -7,7 +7,12 @@ function Users() {
     <div>
       Users:
       <div>
-        <ul>
+        <ul
+          style={{
+            listStyleType: "none",
+            padding: 0,
+          }}
+        >
           {users.map((user) => (
             <li key={user.id}>
               <Link to={"/users/" + user.id}> {user.name} </Link>

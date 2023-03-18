@@ -5,10 +5,19 @@
   border: 1px solid grey;
 }
 
+hr {
+  width: 4rem;
+}
+
 .active {
   font-weight: bolder;
 }
 
 a {
+  color: black;
   text-decoration: none;
+}
+
+a:hover {
+  color: blue;
 }
