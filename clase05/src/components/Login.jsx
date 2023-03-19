@@ -25,32 +25,42 @@ function Login() {
           localStorage.setItem("token", res.data.token);
           navigate("/private");
         } catch (error) {
-          setError("Usuario y/o contrasena incorrectos"); // (error.message) si el servidor devolviera un mensaje con el error
+          setError("Usuario y/o contraseña incorrectos"); // (error.message) si el servidor devolviera un mensaje con el error
         }
         setIsLoading(false);
       }}
     >
-      <h2>Iniciar Sesion</h2>
+      <h2>Iniciar Sesión</h2>
       <hr />
       <label htmlFor="email">E-mail</label>
       <input
         name="email"
         id="email"
-        placeholder="Ingresar correo electronico..."
+        placeholder="Ingresar correo electrónico..."
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <label htmlFor="password">Contrasena</label>
+      <label htmlFor="password">Contraseña</label>
       <input
         type="password"
         name="password"
         id="password"
-        placeholder="Ingresar contrasena..."
+        placeholder="Ingresar contraseña..."
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button>{!isLoading ? "Iniciar sesion" : "Loading..."}</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <button>{!isLoading ? "Iniciar sesión" : "Loading..."}</button>
+      {error && (
+        <p
+          style={{
+            color: "red",
+            padding: "0.5rem",
+            backgroundColor: "rgba(0,0,0,0.15)",
+          }}
+        >
+          {error}
+        </p>
+      )}
     </form>
   );
 }
