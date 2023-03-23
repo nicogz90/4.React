@@ -6,6 +6,8 @@ function countReducer(state = initialState, action) {
       return { ...state, contador: state.contador + 1 };
     case "DECREMENT_COUNT":
       return { ...state, contador: state.contador - 1 };
+    case "SET_COUNT":
+      return { ...state, contador: action.payload };
     default:
       return state;
   }
