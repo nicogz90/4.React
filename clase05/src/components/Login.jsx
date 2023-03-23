@@ -12,24 +12,24 @@ function Login() {
 
   const navigate = useNavigate();
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const res = await axios.post(URL, {
+        username: email,
+        password: password,
+      }); // enviamos datos de login a servidor. Si el usuario existe, el servidor nos devuelve un token. (para el ejemplo de esta URL, hay que usar >> username: hack, password: academy)
+      localStorage.setItem("token", res.data.token);
+      navigate("/private");
+    } catch (error) {
+      setError("Usuario y/o contraseña incorrectos"); // (error.message) si el servidor devolviera un mensaje con el error
+    }
+    setIsLoading(false);
+  };
+
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        try {
-          const res = await axios.post(URL, {
-            username: email,
-            password: password,
-          }); // enviamos datos de login a servidor. Si el usuario existe, el servidor nos devuelve un token. (para el ejemplo de esta URL, hay que usar >> username: hack, password: academy)
-          localStorage.setItem("token", res.data.token);
-          navigate("/private");
-        } catch (error) {
-          setError("Usuario y/o contraseña incorrectos"); // (error.message) si el servidor devolviera un mensaje con el error
-        }
-        setIsLoading(false);
-      }}
-    >
+    <form onSubmit={handleLogin}>
       <h2>Iniciar Sesión</h2>
       <hr />
       <label htmlFor="email">E-mail</label>
