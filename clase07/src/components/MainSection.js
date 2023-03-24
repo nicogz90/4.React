@@ -13,7 +13,7 @@ const MainSection = () => {
     axios
       .get('http://localhost:3004/todos')
       .then((res) => dispatch(setTodos(res.data)));
-  }, []);
+  }, [dispatch]);
 
   return (
     <section className="main">

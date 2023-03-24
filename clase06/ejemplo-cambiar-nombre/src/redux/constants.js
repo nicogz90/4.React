@@ -1,0 +1,1 @@
+export const CAMBIAR_NOMBRE = "CAMBIAR_NOMBRE";
