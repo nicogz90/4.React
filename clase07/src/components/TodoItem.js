@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { checkTodo } from '../redux/todo.slice';
+import { checkTodo, deleteTodo } from '../redux/todo.slice';
 
 export default function TodoItem({ todo }) {
   const dispatch = useDispatch();
@@ -14,7 +14,12 @@ export default function TodoItem({ todo }) {
           onChange={() => dispatch(checkTodo(todo.id))}
         />
         <label>{todo.text}</label>
-        <button className="destroy" onClick={() => null} />
+        <button
+          className="destroy"
+          onClick={() => {
+            dispatch(deleteTodo(todo.id));
+          }}
+        />
       </div>
     </li>
   );

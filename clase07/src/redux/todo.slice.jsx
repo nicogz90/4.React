@@ -12,6 +12,17 @@ const todoSlice = createSlice({
         completed: false,
       });
     },
+    deleteTodo(state, action) {
+      // .filter doesn't work:
+      // the issue is in the way how filter method works, it returns a new array, and initial array is not mutated
+      // state.items.filter((todo) => todo.id !== action.payload);
+
+      // to mutate existing array >>
+      state.items.splice(
+        state.items.findIndex((todo) => todo.id === action.payload),
+        1
+      );
+    },
     checkTodo(state, action) {
       const id = action.payload;
       const completed = state.items[id].completed;
@@ -26,5 +37,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, checkTodo, setTodos, todoLoading } = todoSlice.actions;
+export const { addTodo, deleteTodo, checkTodo, setTodos, todoLoading } =
+  todoSlice.actions;
 export default todoSlice.reducer;
