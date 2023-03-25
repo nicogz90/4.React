@@ -12,7 +12,11 @@ const todoSlice = createSlice({
         completed: false,
       });
     },
-    checkTodo(state, action) {},
+    checkTodo(state, action) {
+      const id = action.payload;
+      const completed = state.items[id].completed;
+      state.items[id].completed = !completed;
+    },
     setTodos(state, action) {
       state.items = action.payload;
     },
