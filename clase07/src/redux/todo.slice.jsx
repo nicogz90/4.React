@@ -1,3 +1,6 @@
+// createSlice is a FUNCTION that returns an object with
+// props "reducer" (with reducers) and "actions" (with actions)
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const todoSlice = createSlice({
@@ -13,20 +16,23 @@ const todoSlice = createSlice({
       });
     },
     deleteTodo(state, action) {
-      // .filter doesn't work:
-      // the issue is in the way how filter method works, it returns a new array, and initial array is not mutated
-      // state.items.filter((todo) => todo.id !== action.payload);
+      // .filter returns a new array
+      state.items = state.items.filter((todo) => todo.id !== action.payload);
 
-      // to mutate existing array >>
-      state.items.splice(
-        state.items.findIndex((todo) => todo.id === action.payload),
-        1
-      );
+      // other way: .splice (mutates array):
+      // state.items.splice(state.items.findIndex((todo) => todo.id === action.payload),1);
     },
     checkTodo(state, action) {
-      const id = action.payload;
+      const id = action.payload.id;
       const completed = state.items[id].completed;
       state.items[id].completed = !completed;
+
+      // other way:
+      /* state.items = state.items.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, completed: action.payload.completed }
+          : item
+      ); */
     },
     setTodos(state, action) {
       state.items = action.payload;

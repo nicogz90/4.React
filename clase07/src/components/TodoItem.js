@@ -11,7 +11,9 @@ export default function TodoItem({ todo }) {
           className="toggle"
           type="checkbox"
           checked={todo.completed}
-          onChange={() => dispatch(checkTodo(todo.id))}
+          onChange={(e) =>
+            dispatch(checkTodo({ id: todo.id, completed: e.target.checked }))
+          }
         />
         <label>{todo.text}</label>
         <button
