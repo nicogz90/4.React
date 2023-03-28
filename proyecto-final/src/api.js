@@ -4,4 +4,5 @@ export default axios.create({
   baseURL:
     process.env.REACT_APP_BASE_URL ||
     "https://ha-react-proyecto-integrador-back-end.vercel.app",
+  headers: { Authorization: "Bearer " + localStorage.getItem("token") },
 });
