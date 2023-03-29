@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-app": "react-scripts start",
-    "start-api": "json-server --watch db.json --port 3004 --delay 1000",
+    "start-api": "json-server --watch db.json --port 3004 --delay 200",
     "start": "npm-run-all --parallel start-api start-app"
   },
   "eslintConfig": {
