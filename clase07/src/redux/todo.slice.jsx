@@ -1,5 +1,5 @@
 // createSlice is a FUNCTION that returns an object with
-// props "reducer" (with reducers) and "actions" (with actions)
+// prop "reducer" (with reducers) and "actions" (with actions)
 
 import { createSlice } from '@reduxjs/toolkit';
 
