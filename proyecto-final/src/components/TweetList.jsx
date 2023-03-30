@@ -18,13 +18,15 @@ function TweetList() {
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-auto">
-        <Link to="/new-tweet">New Tweet</Link>
+        <Link to="/new-tweet" style={{ display: "block", textAlign: "center" }}>
+          New Tweet
+        </Link>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          <ul style={{ listStyleType: "none" }}>
-            {tweets.map((tweet) => (
-              <li key={tweet._id}>
+          <ul style={{ marginTop: "2rem", listStyleType: "none" }}>
+            {tweets.map((tweet, i) => (
+              <li key={tweet._id} className={i % 2 !== 0 ? "isOdd" : "isEven"}>
                 <p>
                   <strong>@{tweet.author.username}</strong>
                 </p>
