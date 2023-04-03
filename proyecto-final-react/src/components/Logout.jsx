@@ -7,7 +7,7 @@ function Logout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    localStorage.removeItem("token");
+    localStorage.clear(); // .removeItem("token")
     dispatch(setIsAuthenticated(false));
     dispatch(setUsername(""));
     navigate("/tweets");

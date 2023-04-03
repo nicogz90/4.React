@@ -12,12 +12,14 @@ function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const res = await api.post("/users", {
         email,
@@ -25,12 +27,14 @@ function SignUp() {
         password,
       });
       localStorage.setItem("token", res.data.token);
+      api.defaults.headers.Authorization = "Bearer " + res.data.token;
       dispatch(setIsAuthenticated(true));
       dispatch(setUser(username));
       navigate("/tweets");
     } catch (error) {
       setError(error.response.data.message);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -73,7 +77,7 @@ function SignUp() {
           className="btn btn-primary m-3"
           disabled={!email || !username || !password}
         >
-          Submit
+          {isLoading ? <i className="fa fa-spinner fa-spin fa-1x" /> : "Submit"}
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>

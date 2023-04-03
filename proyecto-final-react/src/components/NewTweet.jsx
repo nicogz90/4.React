@@ -47,9 +47,9 @@ function NewTweet() {
         <button
           type="submit"
           className="btn btn-primary m-3"
-          disabled={newTweet ? false : true}
+          disabled={!newTweet}
         >
-          {isLoading ? "Sending" : "Send"}
+          {isLoading ? <i className="fa fa-spinner fa-spin fa-1x" /> : "Send"}
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>

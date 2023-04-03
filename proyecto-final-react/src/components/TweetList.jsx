@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import api from "../api";
 import { useState } from "react";
 
@@ -11,18 +10,17 @@ function TweetList() {
     setIsLoading(true);
     api.get("/tweets").then((res) => {
       setTweets(res.data);
+      setIsLoading(false);
     });
-    setIsLoading(false);
   }, []);
 
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-auto">
-        <Link to="/new-tweet" style={{ display: "block", textAlign: "center" }}>
-          New Tweet
-        </Link>
         {isLoading ? (
-          <p>Loading...</p>
+          <p>
+            <i className="fa fa-spinner fa-spin fa-1x" /> Loading Tweets...
+          </p>
         ) : (
           <ul style={{ marginTop: "2rem", listStyleType: "none" }}>
             {tweets.map((tweet, i) => (

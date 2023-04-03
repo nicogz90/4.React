@@ -37,6 +37,9 @@ function App() {
               </>
             ) : (
               <>
+                <li>
+                  <NavLink to="/new-tweet">New Tweet</NavLink>
+                </li>
                 <li className="navbar-item">
                   <NavLink to="/logout">Logout</NavLink>
                 </li>

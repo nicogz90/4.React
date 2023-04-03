@@ -5,7 +5,7 @@ const tweetSlice = createSlice({
   initialState: [],
   reducers: {
     addNewTweet(state, action) {
-      state.tweets.push({ text: action.payload });
+      state.tweets.push({ text: action.payload }); // this can be done thanks to IMMER (tiny package that allow us to write inmutable actualizations using mutative code)
     },
   },
 });

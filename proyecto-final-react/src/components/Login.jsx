@@ -7,6 +7,7 @@ import { setIsAuthenticated, setUsername } from "../redux/user.slice";
 function Login() {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const res = await api.post("/sessions", {
         email: usernameOrEmail,
@@ -21,12 +23,14 @@ function Login() {
         password,
       });
       localStorage.setItem("token", res.data.token);
+      api.defaults.headers.Authorization = "Bearer " + res.data.token;
       dispatch(setIsAuthenticated(true));
       dispatch(setUsername(res.data.user.username));
       navigate("/tweets");
     } catch (error) {
       setError(error.response.data.message);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -64,7 +68,7 @@ function Login() {
           className="btn btn-primary m-3 d-grid"
           disabled={!usernameOrEmail || !password}
         >
-          Submit
+          {isLoading ? <i className="fa fa-spinner fa-spin fa-1x" /> : "Login"}
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <Link to="/signup">Don't have an account?</Link>
