@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function Header() {
   return (
@@ -10,7 +10,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
+    height: 60,
     alignItems: "center",
     justifyContent: "center",
   },

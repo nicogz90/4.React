@@ -22,10 +22,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "lightblue",
+    backgroundColor: "gray",
   },
   footer: {
-    flex: 1,
+    height: 60,
     color: "white",
     alignItems: "center",
     justifyContent: "center",

@@ -62,14 +62,18 @@ export default function Main() {
       </View>
       <ScrollView>
         {isLoading && <Text style={styles.isLoading}>Loading...</Text>}
-        {error && <Text style={styles.error}>{error}</Text>}
+        {error && <Text style={styles.alert}>{error}</Text>}
         {posterUrl && (
           <Image
             source={{ uri: posterUrl }}
             style={{ width: width - 50, height: 600, resizeMode: "stretch" }}
           />
         )}
-        {posterUrl === null && <Text style={styles.noData}>No data</Text>}
+        {posterUrl === null && (
+          <Text style={[styles.alert, { backgroundColor: "orange" }]}>
+            No data
+          </Text>
+        )}
       </ScrollView>
     </View>
   );
@@ -77,23 +81,18 @@ export default function Main() {
 
 const styles = StyleSheet.create({
   main: {
-    flex: 6,
-    backgroundColor: "gray",
+    flex: 1,
+    backgroundColor: "lightgray",
     alignItems: "center",
   },
   isLoading: { color: "white", textAlign: "center" },
-  error: {
+  alert: {
     color: "white",
     backgroundColor: "red",
     textAlign: "center",
     width: "100%",
-    padding: 20,
-  },
-  noData: {
-    color: "white",
-    backgroundColor: "orange",
-    textAlign: "center",
-    width: "100%",
-    padding: 20,
+    padding: 15,
+    borderRadius: 15,
+    overflow: "hidden",
   },
 });
