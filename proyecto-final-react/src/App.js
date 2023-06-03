@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="container">
-      <nav className="navbar p-3 mb-3">
+      <nav className="navbar p-3 mb-3 sticky-top">
         <div className="d-flex align-items-center">
           <FontAwesomeIcon icon={faTwitter} className="icon" />
           <ul className="navbar-nav">

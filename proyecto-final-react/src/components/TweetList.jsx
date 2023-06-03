@@ -15,20 +15,27 @@ function TweetList() {
   }, []);
 
   return (
-    <div className="row d-flex justify-content-center">
-      <div className="col-auto">
+    <div className="row d-flex justify-content-center p-0">
+      <div className="col-auto mw-50">
         {isLoading ? (
           <p>
             <i className="fa fa-spinner fa-spin fa-1x" /> Loading Tweets...
           </p>
         ) : (
-          <ul style={{ marginTop: "2rem", listStyleType: "none" }}>
+          <ul
+            style={{
+              marginTop: "2rem",
+              listStyleType: "none",
+            }}
+          >
             {tweets.map((tweet, i) => (
               <li key={tweet._id} className={i % 2 !== 0 ? "isOdd" : "isEven"}>
                 <p>
                   <strong>@{tweet.author.username}</strong>
                 </p>
-                <p style={{ marginLeft: "20px" }}>{tweet.text}</p>
+                <p style={{ marginLeft: "20px", flexWrap: "wrap" }}>
+                  {tweet.text}
+                </p>
                 <hr />
               </li>
             ))}

@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(
     0deg,
-    rgba(38, 38, 38, 1) 0%,
-    rgba(42, 64, 83, 1) 100%
+    rgba(42, 64, 83, 1) 0%,
+    rgb(121, 183, 238) 100%
   );
   background-attachment: fixed;
   color: white;
@@ -21,14 +21,18 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: rgb(118, 118, 247);
+  color: rgba(42, 64, 83, 1);
   filter: brightness(125%);
+}
+
+nav h2 {
+  max-width: 25%;
 }
 
 .isEven,
 .isOdd {
   background-color: rgb(208, 207, 207, 0.4);
-  padding-left: 1rem;
+  padding: 0 1rem;
   border-radius: 1rem;
 }
 .isOdd {
