@@ -63,6 +63,8 @@ export default function MovieSearch() {
       )}
 
       {!isLoading && movies && (
+        /* FlatList is used to show a scrollable list of different data, but with similar structure.
+        It is good to show a great qty of elements, since it only renders the visible ones on the screen (unlike ScrollView) */
         <FlatList
           contentContainerStyle={{ alignItems: "center" }}
           data={movies}
