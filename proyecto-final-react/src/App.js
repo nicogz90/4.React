@@ -18,7 +18,7 @@ function App() {
   // const dispatch = useDispatch();
 
   return (
-    <div className="container">
+    <div className="container p-0">
       <nav className="navbar p-3 mb-3 sticky-top">
         <div className="d-flex align-items-center">
           <FontAwesomeIcon icon={faTwitter} className="icon" />

@@ -16,7 +16,7 @@ function TweetList() {
 
   return (
     <div className="row d-flex justify-content-center p-0">
-      <div className="col-auto mw-50">
+      <div className="col-auto">
         {isLoading ? (
           <p>
             <i className="fa fa-spinner fa-spin fa-1x" /> Loading Tweets...
@@ -24,8 +24,10 @@ function TweetList() {
         ) : (
           <ul
             style={{
-              marginTop: "2rem",
               listStyleType: "none",
+              marginTop: "2rem",
+              padding: "0",
+              maxWidth: "75vw",
             }}
           >
             {tweets.map((tweet, i) => (

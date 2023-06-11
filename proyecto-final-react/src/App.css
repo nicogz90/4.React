@@ -6,6 +6,11 @@ body {
   );
   background-attachment: fixed;
   color: white;
+  overflow-x: hidden;
+}
+
+nav {
+  backdrop-filter: blur(25px);
 }
 
 .icon {
@@ -23,10 +28,6 @@ a:hover {
   text-decoration: none;
   color: rgba(42, 64, 83, 1);
   filter: brightness(125%);
-}
-
-nav h2 {
-  max-width: 25%;
 }
 
 .isEven,
