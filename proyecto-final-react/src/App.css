@@ -33,9 +33,13 @@ a:hover {
 .isEven,
 .isOdd {
   background-color: rgb(208, 207, 207, 0.4);
-  padding: 0 1rem;
+  padding-left: 1rem;
   border-radius: 1rem;
 }
 .isOdd {
   background-color: rgba(128, 128, 128, 0.4);
+}
+
+.deleteButton {
+  border-top-right-radius: 1rem;
 }

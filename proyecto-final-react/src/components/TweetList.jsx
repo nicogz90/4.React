@@ -5,14 +5,32 @@ import { useState } from "react";
 function TweetList() {
   const [tweets, setTweets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
+  function fetchData() {
     setIsLoading(true);
     api.get("/tweets").then((res) => {
       setTweets(res.data);
       setIsLoading(false);
     });
+  }
+
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const handleDelete = async (id) => {
+    setIsLoading(true);
+    try {
+      await api.delete(`/tweets/${id}`, {
+        headers: { Authorization: "bearer " + localStorage.getItem("token") },
+      });
+      fetchData();
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div className="row d-flex justify-content-center p-0">
@@ -32,10 +50,18 @@ function TweetList() {
           >
             {tweets.map((tweet, i) => (
               <li key={tweet._id} className={i % 2 !== 0 ? "isOdd" : "isEven"}>
-                <p>
-                  <strong>@{tweet.author.username}</strong>
-                </p>
-                <p style={{ marginLeft: "20px", flexWrap: "wrap" }}>
+                <div className="mb-2 d-flex justify-content-between align-items-center">
+                  <p style={{ margin: 0 }}>
+                    <strong>@{tweet.author.username}</strong>
+                  </p>
+                  <button
+                    className="deleteButton"
+                    onClick={() => handleDelete(tweet._id)}
+                  >
+                    X
+                  </button>
+                </div>
+                <p style={{ paddingRight: "20px", flexWrap: "wrap" }}>
                   {tweet.text}
                 </p>
                 <hr />
