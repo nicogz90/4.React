@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import api from "../api";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function TweetList() {
   const [tweets, setTweets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const username = useSelector((state) => state.users.username);
 
   function fetchData() {
     setIsLoading(true);
@@ -57,6 +59,7 @@ function TweetList() {
                   <button
                     className="deleteButton"
                     onClick={() => handleDelete(tweet._id)}
+                    disabled={username !== tweet.author.username}
                   >
                     X
                   </button>
